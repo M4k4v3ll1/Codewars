@@ -6,11 +6,25 @@
 </head>
 <body>
 <script>
-    function solution(str){
+    function removeChar(str) {
+        return str.slice(1, -1)
 
-    }
+        // Do solution with .shift and .pop methods
+        // let arr = str.split('')
+        // let shiftedArr = arr.shift()
+        // let poppedArr = arr.pop()
+        // let result = arr.join('')
+        // return result
 
-
+        // Tried to do with .map method. Cannot understand how to set a condition for first array element
+        // let splittedArr = str.split('')
+        // console.log(splittedArr)
+        // let mappedArr = splittedArr.map(el => ((el > str[str[0]] && el !== str[str.length - 1]) ? el : ''))
+        // console.log(mappedArr)
+        // let result = mappedArr.join('')
+        // console.log(result)
+    };
+    removeChar('example')
 </script>
 </body>
 </html>
