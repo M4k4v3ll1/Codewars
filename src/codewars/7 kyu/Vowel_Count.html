@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function getCount(str) {
+           let VowelCount = 0
+        const s = str.split('')
+        for (let i = 0; i < s.length; i++) {
+            if (s[i] === 'a' | s[i] === 'e' | s[i] === 'i' | s[i] === 'o' | s[i] === 'u') {
+                VowelCount++
+            }
+        }
+        return VowelCount;
+    }
+
+    getCount('o a kak ushakov lil vo kashu kakao')
+
+</script>
+</body>
+</html>
