@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function abbrevName(name) {
+        const splittedName = name.split(' ')
+        const firstLetter = splittedName[0].slice(0, 1).toUpperCase()
+        const secondLetter = splittedName[1].slice(0, 1).toUpperCase()
+        const capitals = firstLetter + '.' + secondLetter
+        return capitals
+    }
+
+    console.log(abbrevName('John Doe'))
+</script>
+</body>
+</html>

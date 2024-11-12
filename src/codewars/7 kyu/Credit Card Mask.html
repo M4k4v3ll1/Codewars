@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Card Mask</title>
+</head>
+<body>
+<script>
+    // My first variant
+    // function maskify(cc) {
+    //     const mskd = cc.split('').reverse()
+    //     if (mskd.length <= 4) {
+    //         return cc
+    //     } for (let i = 4; i < mskd.length; i++) {
+    //         mskd[i] = '#'
+    //     }
+    //     return mskd.reverse().join('')
+    //
+    // }
+
+    function maskify(cc) {
+        return ('#'.repeat(cc.slice(0, -4).length) + cc.slice(-4))
+    }
+
+    console.log(maskify('Skippy'))
+</script>
+</body>
+</html>

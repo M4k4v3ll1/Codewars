@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String ends with question mark</title>
+</head>
+<body>
+<script>
+    function solution(str, ending) {
+        if (ending.length === 0) {
+            return true
+        }
+        const revertedStr = str.split('').reverse()
+        const revertedEnding = ending.split('').reverse()
+        let res
+        for (let i = 0; i < revertedEnding.length; i++) {
+            if (revertedEnding[i] === revertedStr[i]) {
+                res = true
+            } else {
+                return res = false
+            }
+        }
+        return res
+    }
+
+    console.log(solution(':-)', ':-('))
+</script>
+</body>
+</html>

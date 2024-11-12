@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leap Years</title>
+</head>
+<body>
+<script>
+    //My solution
+    // function isLeapYear(year) {
+    //     if (Number.isInteger(year/400)) {
+    //         return true
+    //     } else if (year%4 === 0 && !Number.isInteger(year/100)) {
+    //         return true
+    //     }
+    //     return false
+    // }
+
+
+    //Best practice
+    function isLeapYear(year) {
+       return  year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
+    }
+
+
+
+    console.log(isLeapYear(1600))
+
+</script>
+</body>
+</html>
