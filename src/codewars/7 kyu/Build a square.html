@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Build a square</title>
+</head>
+<body>
+<script>
+    //My first solution
+    // function generateShape(integer){
+    //     const row = new Array(integer + 1).fill('+').fill('\n', integer)
+    //     const repeated = [...row]
+    //     for (let i = 1; i < integer; i++) {
+    //         const pushed = row.push(...repeated)
+    //     }
+    //     const popped = row.pop(row.length)
+    //     const square = row.join('')
+    //     return square
+    // }
+
+    //Вариант через chatGPT
+    const generateShape = integer => Array.from({ length: integer }, () => '+'.repeat(integer)).join('\n');
+
+    console.log(generateShape(4))
+</script>
+</body>
+</html>

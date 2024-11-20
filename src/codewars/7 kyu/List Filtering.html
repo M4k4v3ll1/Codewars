@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Filtering</title>
+</head>
+<body>
+<script>
+    function filter_list(l) {
+        return l.filter(el => typeof el === 'number')
+    }
+
+   console.log(filter_list([1,2,'a','b']))
+</script>
+</body>
+</html>

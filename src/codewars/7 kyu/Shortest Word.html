@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shortest Word</title>
+</head>
+<body>
+<script>
+    //My solution
+    // function findShort(s) {
+    //     let shortest = Infinity
+    //     let splitted = s.split(' ')
+    //     for (let i = 0; i < splitted.length; i++) {
+    //         splitted[i].split('').length < shortest ? shortest = splitted[i].split('').length : shortest
+    //         }
+    //     return shortest
+    //     }
+
+    //Best practice
+    function findShort(s) {
+        return Math.min(...s.split(' ').map(w => w.length))
+    }
+
+    console.log(findShort('Lets all go on holiday somewhere very cold'))
+</script>
+</body>
+</html>

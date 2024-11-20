@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find the capitals</title>
+</head>
+<body>
+<script>
+    //My first solution
+    // function capitals (word) {
+    //     let arr =  word.split('')
+    //     let indexed = arr.map((l, index) => l.toUpperCase() === l ? index : null)
+    //     let res = []
+    //     for (let i = 0; i < indexed.length; i++) {
+    //         if (indexed[i] !== null) {
+    //             res.push(indexed[i])
+    //         }
+    //     }
+    //     return res
+    // }
+
+    //In one-line
+    function capitals (word) {
+        return word.split('').map((l, index) => l.toUpperCase() === l ? index : null).filter(l => l !== null)
+    }
+
+    console.log(capitals('CodEWaRs'))
+</script>
+</body>
+</html>

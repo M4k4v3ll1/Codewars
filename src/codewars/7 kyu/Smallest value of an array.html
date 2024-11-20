@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smallest value of an array</title>
+</head>
+<body>
+<script>
+    function min(arr, toReturn) {
+        return toReturn === 'value' ? Math.min(...arr) : arr.indexOf(Math.min(...arr))
+    }
+
+    console.log(min([500,250,750,5000,1000,230], 'index'))
+</script>
+</body>
+</html>
