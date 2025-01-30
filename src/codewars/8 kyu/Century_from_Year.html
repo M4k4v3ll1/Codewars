@@ -6,23 +6,42 @@
 </head>
 <body>
 <script>
-    function century(year) {
-        const calcCentury = year/100
-        const centuryRounded = Math.round(calcCentury)
-        const centuryFrounded = Math.fround(calcCentury)
-        if (calcCentury < 1) {
-            return 1
-        }
-        if (calcCentury === 0) {
-            return calcCentury
-        }
-        if (centuryRounded === centuryFrounded) {
-            return calcCentury
-        }
-        return Math.trunc(centuryFrounded) + 1
-    }
+    // function century(year) {
+    //     const calcCentury = year/100
+    //     const centuryRounded = Math.round(calcCentury)
+    //     const centuryFrounded = Math.fround(calcCentury)
+    //     if (calcCentury < 1) {
+    //         return 1
+    //     }
+    //     if (calcCentury === 0) {
+    //         return calcCentury
+    //     }
+    //     if (centuryRounded === centuryFrounded) {
+    //         return calcCentury
+    //     }
+    //     return Math.trunc(centuryFrounded) + 1
+    // }
 
-    console.log(century(1799))
+    // const reverceArray = (arr) => {
+    //     const res = [...arr]
+    //     for (let i = 0; i < arr.length; i++) {
+    //             res[i] = arr[arr.length - i - 1]
+    //             res[arr.length - i - 1] = arr[i]
+    //     }
+    //     return res
+    // }
+    // console.log(reverceArray([1, 2, 3, 4, 5, 6] ))
+
+    const showPairs = (arr) => {
+        for (let i = 1; i < arr.length; i++) {
+            if (i !== 0) {
+                console.log(`${arr[i]} and ${arr[i-1]} are friends`)
+            } else {
+                console.log(`no pair and ${arr[i]} are friends`)
+            }
+        }
+    }
+    showPairs([1, 2, 3])
 </script>
 </body>
 </html>

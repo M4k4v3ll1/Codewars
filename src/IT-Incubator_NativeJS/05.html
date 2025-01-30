@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Publisher/Subscriber-Events</title>
+</head>
+<body>
+    <script>
+        const button = {
+            subscribers: {},
+            addEventListener(event, subscriber) {
+                if (!this.subscribers[event]) {
+                    this.subscribers = {...this.subscribers, [event]: []}
+                }
+                this.subscribers[event].push(subscriber)
+            },
+            click() {
+                console.log(`button clicked!`)
+                if (!this.subscribers['click']) return
+                this.subscribers['click'].forEach(s => s())
+            },
+            mouseover() {
+                console.log(`button mouseover`)
+                if (!this.subscribers['mouseover']) return
+                this.subscribers['mouseover'].forEach(s => s())
+            },
+            removeEventListener(event, subscriber) {
+                if (!this.subscribers[event]) return
+                this.subscribers[event] = this.subscribers[event].filter(s => s !== subscriber)
+            }
+        }
+
+        const alertHelloWorldHandler = () => {
+            alert('Hello World')
+        }
+        const mouseOverHandler = () => {
+            alert('Do it! Push it!')
+        }
+
+        button.addEventListener('click', alertHelloWorldHandler)
+        button.click()
+        button.removeEventListener('click', alertHelloWorldHandler)
+        button.click()
+        button.addEventListener('mouseover', mouseOverHandler)
+        console.log(button.subscribers)
+        button.mouseover()
+    </script>
+</body>
+</html>
