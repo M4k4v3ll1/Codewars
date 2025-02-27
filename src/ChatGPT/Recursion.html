@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recursion</title>
+    </head>
+        <body>
+        <script>
+            // Напишите рекурсивную функцию factorial(n), которая возвращает факториал числа n.
+            //     Факториал числа — это произведение всех натуральных чисел от 1 до n.
+            //     Например:
+            //
+            // factorial(5) → 120 (1 * 2 * 3 * 4 * 5)
+            //
+            // factorial(3) → 6 (1 * 2 * 3)
+
+            // function factorial(n) {
+            //     if (n === 0 || n === 1) {
+            //         return 1
+            //     }
+            //     return n * factorial(n - 1)
+            // }
+            /*Временная сложность O(n) (функция выполняет n умножений)
+            Дополнительная память O(n) (каждый рекурсивный вызов занимает место в памяти/стеке вызовов)
+            !Возможно переполнение стека если n>10000*/
+
+            //С помощью цикла
+            // function factorial2(n) {
+            //     let res = 1
+            //     for (let i = 2; i <= n; i++) {
+            //         res *= i
+            //     }
+            //     return res
+            // }
+
+            /*Временная сложность O(n) (цикл длиной n)
+            Дополнительная память O(1) (не требуется хранить стек вызовов)
+            */
+
+            // console.log(factorial(5))
+            // console.log(factorial2(5))
+
+            // 2. Сумма чисел от 1 до n
+            // Напишите рекурсивную функцию sumTo(n), которая возвращает сумму всех чисел от 1 до n.
+            //     Например:
+            //
+            // sumTo(5) → 15 (1 + 2 + 3 + 4 + 5)
+            //
+            // sumTo(3) → 6 (1 + 2 + 3)
+
+            // function sumTo(n) {
+            //     if (n === 0 || n === 1) {
+            //         return n
+            //     }
+            //     return n + sumTo(n - 1)
+            // }
+            /*Временная сложность O(n) (функция вызывается n раз)
+            Дополнительная память O(n) (каждый рекурсивный вызов занимает место в памяти/стеке вызовов)
+            !Возможно переполнение стека если n>10000*/
+
+            //С помощью цикла
+            // function sumTo2(n) {
+            //     let res = 0
+            //     for (let i = 1; i <= n; i++) {
+            //         res += i
+            //     }
+            //     return res
+            // }
+            /*Временная сложность O(n) (цикл длиной n)
+            Дополнительная память O(1) (не требуется хранить стек вызовов
+            */
+
+            //С помощью формулы арифмитической прогрессии S = (n * (n + 1)) / 2
+            // function sumTo3(n) {
+            //     return (n * (n + 1)) / 2
+            // }
+            /*Временная сложность O(1) (выполняется 1 операция умножения, сложения и деления)
+            Дополнительная память O(1) (используется только 1 переменная)
+            !Возможны ошибки при больших числах из-за точности вычислений с плавающей точкой
+            */
+            //
+            // console.log(sumTo(5))
+            // console.log(sumTo2(5))
+            // console.log(sumTo3(5))
+
+            // 3. Числа Фибоначчи
+            // Напишите рекурсивную функцию fibonacci(n), которая возвращает n-ое число Фибоначчи.
+            //     Числа Фибоначчи определяются так:
+            //
+            // fibonacci(0) → 0
+            //
+            // fibonacci(1) → 1
+            //
+            // fibonacci(n) → fibonacci(n - 1) + fibonacci(n - 2)
+            // Например:
+            //
+            // fibonacci(2) → 1 (0, 1, 1)
+            // fibonacci(3) → 2 (0, 1, 1, 2)
+            // fibonacci(4) → 3 (0, 1, 1, 2, 3)
+            // fibonacci(5) → 5 (0, 1, 1, 2, 3, 5)
+            // fibonacci(7) → 13 → 5 (0, 1, 1, 2, 3, 5, 8, 13)
+
+            // function fibonacci(n) {
+            //     if (n === 0) {
+            //         return 0
+            //     } else if (n === 1) {
+            //         return 1
+            //     }
+            //     return fibonacci(n - 1) + fibonacci(n - 2)
+            // }
+            // /*Cложность O(2**n) (экспоненциальная, пересчитываются одни и те же значения многократно)*/
+            //
+            // //Рекурсия с помощью мемоизации
+            // function fibonacciMemo(n, memo = {}) {
+            //     if (n in memo) {
+            //         return memo[n]
+            //         console.log(memo)
+            //     }
+            //     if (n === 0) {
+            //         return 0
+            //     }
+            //     else if (n === 1) {
+            //         return 1
+            //     }
+            //     memo[n] = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo)
+            //     return memo[n]
+            // }
+            // /*Cложность O(n)*/
+            //
+            // //С помощью цикла
+            // function fibonacci2(n) {
+            //     let temp = 0
+            //     let prev = 0
+            //     let next = 1
+            //     if (n === 0) {
+            //         return prev
+            //     } else if (n === 1) {
+            //         return next
+            //     } else if (n > 1)
+            //     for (let i = 2; i <=n; i++) {
+            //         temp = prev
+            //         prev = next
+            //         next += temp
+            //     }
+            //     return next
+            // }
+            // //Или без temp
+            // function fibonacci2_2(n) {
+            //     let [prev, next] = [0, 1]
+            //     for (let i = 2; i <=n; i++) {
+            //         [prev, next] = [next, prev + next]
+            //     }
+            //     return n === 0 ? 0 : next
+            // }
+            // /*Cложность O(n)*/
+            //
+            // //С помощью формулы Бине
+            // function fibonacci3(n) {
+            //     let gSec = (1 + 5**(0.5))/2
+            //     return Math.round((gSec**n - -1 * (gSec**-n))/(2*gSec - 1))
+            // }
+            // /*Cложность O(1)*/
+            //
+            // console.log(fibonacciMemo(0))
+            // console.log(fibonacci2_2(1))
+            // console.log(fibonacci2_2(2))
+            // console.log(fibonacci2_2(3))
+            // console.log(fibonacci2_2(4))
+            // console.log(fibonacci2_2(5))
+            // console.log(fibonacci2_2(7))
+
+            // 4. Степень числа
+            // Напишите рекурсивную функцию power(base, exponent), которая возвращает результат возведения числа base в степень exponent.
+            //     Например:
+            //
+            // power(2, 3) → 8 (2 * 2 * 2)
+            //
+            // power(5, 2) → 25 (5 * 5)
+
+            // function power(base, exponent) {
+            //     if (exponent === 1) {
+            //         return base
+            //     }
+            //     return base * power(base, exponent - 1)
+            // }
+            // // /*Cложность O(n)*/
+            //
+            // //Рекурсия через разделение exponent пополам
+            // function power_fast(base, exponent) {
+            //     if (exponent === 0) {
+            //         return 1
+            //     }
+            //     if (exponent % 2 === 0) {
+            //         let half = power_fast(base, exponent/2)
+            //         return half * half
+            //     }
+            //     return base * power_fast(base, exponent - 1)
+            // }
+            // // /*Cложность O(log n)*/
+            //
+            // //Через цикл
+            // function power2(base, exponent) {
+            //     let res = base
+            //     for (let i = 2; i <= exponent; i++) {
+            //         res *= base
+            //     }
+            //     return res
+            // }
+            // // /*Cложность O(n)*/
+            //
+            // //Цикл через разделение exponent пополам
+            // function power2_fast(base, exponent) {
+            //     let res = 1
+            //     while (exponent > 0) {
+            //         if (exponent % 2 === 1) {
+            //             res *= base
+            //         }
+            //         base *= base
+            //         exponent=Math.floor(exponent/2)
+            //     }
+            //     return res
+            // }
+            // // /*Cложность O(log n)*/
+            //
+            // //Через математическую формулу
+            // function power3(base, exponent) {
+            //     return base ** exponent
+            // }
+            // // /*Cложность O(1)*/
+            //
+            // console.log(power2_fast(2, 3))
+            // console.log(power2_fast(5, 2))
+
+            // 5. Глубокое копирование объекта
+            // Напишите рекурсивную функцию deepCopy(obj), которая создает глубокую копию объекта.
+            //     Например:
+            // const original = { a: 1, b: { c: 2 } };
+            // const copied = deepCopy(original);
+            // console.log(copied); // { a: 1, b: { c: 2 } }
+            // console.log(original.b === copied.b); // false (объекты разные)
+
+            // function deepCopy(obj) {
+            //     let obj2 = {}
+            //     if (typeof obj !== 'object' || obj === null) {
+            //         obj2 = {...obj}
+            //         return obj2
+            //     }
+            //     if (Array.isArray(obj)) {
+            //         obj2 = [...obj]
+            //     }
+            //     obj2 = {...deepCopy(obj)}
+            //     return obj2
+            // }
+            // const original = { a: 1, b: { c: 2 } };
+            // const copied = deepCopy(original);
+            // console.log(copied)
+            // console.log(original.b === copied.b)
+
+            // 6. Обратная строка
+            // Напишите рекурсивную функцию reverseString(str), которая возвращает строку в обратном порядке.
+            //     Например:
+            //
+            // reverseString("hello") → "olleh"
+            //
+            // reverseString("abc") → "cba"
+
+            // function reverseString(str) {
+            //     let reversedStr = ''
+            //     if (str.length === str[str.length - 1]) {
+            //
+            //     }
+            // }
+            //
+            // console.log('abc'.indexOf('e'))
+            // 7. Поиск в глубину (DFS) для дерева
+            // Напишите рекурсивную функцию dfs(node), которая выполняет поиск в глубину для дерева и возвращает массив значений всех узлов.
+            //     Например:
+            //
+            // javascript
+            // Copy
+            // const tree = {
+            //     value: 1,
+            //     children: [
+            //         { value: 2, children: [] },
+            //         { value: 3, children: [
+            //                 { value: 4, children: [] },
+            //                 { value: 5, children: [] }
+            //             ]}
+            //     ]
+            // };
+            //
+            // console.log(dfs(tree)); // [1, 2, 3, 4, 5]
+            // 8. Проверка на палиндром
+            // Напишите рекурсивную функцию isPalindrome(str), которая проверяет, является ли строка палиндромом.
+            //     Например:
+            //
+            // isPalindrome("racecar") → true
+            //
+            // isPalindrome("hello") → false
+            //
+            // 9. Подсчет глубины объекта
+            // Напишите рекурсивную функцию getDepth(obj), которая возвращает глубину вложенности объекта.
+            //     Например:
+            //
+            // javascript
+            // Copy
+            // const obj = { a: { b: { c: {} } } };
+            // console.log(getDepth(obj)); // 3
+            // 10. Генерация всех перестановок строки
+            // Напишите рекурсивную функцию permutations(str), которая возвращает массив всех возможных перестановок символов строки.
+            //     Например:
+            //
+            // permutations("abc") → ["abc", "acb", "bac", "bca", "cab", "cba"]
+        </script>
+</body>
+</html>
