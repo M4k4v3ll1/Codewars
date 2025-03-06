@@ -19,16 +19,23 @@
     
     //My code
     function insertDash(num) {
-        const arr =  num.toString().split('')
+        let arr = num.toString().split('')
+        let res = []
         for (let i = 0; i < arr.length; i++) {
-            if (arr[i] > 0 && arr[i+1] > 0) {
-                arr[i] += '-'
+            if (arr.length === 1) {
+                res.push(arr[i])
+                return res
+            } else if (arr[i] % 2 === 0 || arr[i+1] % 2 === 0 || i === arr.length-1) {
+                res.push(arr[i])
+            } else {
+                res.push(arr[i] + '-')
             }
         }
-        return arr.join('')
+        return res.join('')
     }
-
-    console.log(insertDash(13579))
+    console.log(insertDash(454793))
+    console.log(insertDash(123456))
+    console.log(insertDash(1003567))
 </script>
 </body>
 </html>

@@ -6,27 +6,25 @@
 </head>
 <body>
 <script>
-    //unfinished
-    function digPow(n, p){
-        let digits = String(n).split('')
-        console.log(`digits is ${digits}`)
-        const arr = []
-        let res = - 1
-        for (let i = p; i < digits.length + 1; i++) {
-            arr.push(Math.pow(digits[i - 1], i))
-        }
-        console.log(`arr is ${arr}`)
-        let sum = 0
-        for (let i = 0; i < arr.length; i++) {
-            sum += arr[i]
-        }
-        console.log(`sum is ${sum}`)
-        for (let i = 0; i < 100; i++) {
-            sum * i === n ? res = i : res
-        }
-        return res
-    }
+    //Через цикл
+    //function digPow(n, p) {
+        //let numbers = n.toString().split('').map(n => Number(n))
+        // let res = 0
+        // for (let i = 0; i < numbers.length; i++) {
+        //     res += numbers[i] ** (i + p)
+        // }
+        // let k = res / n
+        // return res === n * k ? k : -1
+    //}
 
+    function digPow(n, p) {
+        let sum = n.toString().split('').map((d, i) => Number(d) ** (p + i)).reduce((a, b) => a + b)
+        let k = sum / n
+        return Number.isInteger(k) ? k : -1
+    }
+    console.log(digPow(89, 1))
+    console.log(digPow(92, 1))
+    console.log(digPow(695, 2))
     console.log(digPow(46288, 3))
 </script>
 </body>

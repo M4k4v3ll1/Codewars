@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Abbreviate a Two Word Name</title>
 </head>
 <body>
 <script>
@@ -22,26 +22,15 @@
     //     return Math.trunc(centuryFrounded) + 1
     // }
 
-    // const reverceArray = (arr) => {
-    //     const res = [...arr]
-    //     for (let i = 0; i < arr.length; i++) {
-    //             res[i] = arr[arr.length - i - 1]
-    //             res[arr.length - i - 1] = arr[i]
-    //     }
-    //     return res
-    // }
-    // console.log(reverceArray([1, 2, 3, 4, 5, 6] ))
-
-    const showPairs = (arr) => {
-        for (let i = 1; i < arr.length; i++) {
-            if (i !== 0) {
-                console.log(`${arr[i]} and ${arr[i-1]} are friends`)
-            } else {
-                console.log(`no pair and ${arr[i]} are friends`)
-            }
-        }
+    function century(year) {
+        return Math.ceil(year / 100)
     }
-    showPairs([1, 2, 3])
+
+    console.log(century(1705))
+    console.log(century(1900))
+    console.log(century(1601))
+    console.log(century(2000))
+    console.log(century(89))
 </script>
 </body>
 </html>

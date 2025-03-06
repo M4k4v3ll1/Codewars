@@ -18,8 +18,19 @@
     //     return square
     // }
 
+    //function generateShape(integer){
+    // let row = '+'.repeat(integer)
+    // let res = row
+    // for (let i = 2; i <= integer; i++) {
+    //     res += `\n${row}`
+    // }
+    // return res
+    // }
+
     //Вариант через chatGPT
-    const generateShape = integer => Array.from({ length: integer }, () => '+'.repeat(integer)).join('\n');
+    function generateShape(integer){
+        return Array.from({length: integer}, () => '+'.repeat(integer)).join('\n')
+    }
 
     console.log(generateShape(4))
 </script>

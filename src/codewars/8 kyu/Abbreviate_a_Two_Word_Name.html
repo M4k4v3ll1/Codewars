@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Abbreviate a Two Word Name</title>
 </head>
 <body>
 <script>
-    function abbrevName(name) {
-        const splittedName = name.split(' ')
-        const firstLetter = splittedName[0].slice(0, 1).toUpperCase()
-        const secondLetter = splittedName[1].slice(0, 1).toUpperCase()
-        const capitals = firstLetter + '.' + secondLetter
-        return capitals
+    // function abbrevName(name) {
+    //     const splittedName = name.split(' ')
+    //     const firstLetter = splittedName[0].slice(0, 1).toUpperCase()
+    //     const secondLetter = splittedName[1].slice(0, 1).toUpperCase()
+    //     const capitals = firstLetter + '.' + secondLetter
+    //     return capitals
+    // }
+
+    function abbrevName(name){
+        return `${name.toUpperCase().split(' ')[0].slice(0,1)}.${name.toUpperCase().split(' ')[1].slice(0,1)}`
     }
 
     console.log(abbrevName('John Doe'))

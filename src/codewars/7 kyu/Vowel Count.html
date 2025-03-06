@@ -6,20 +6,22 @@
 </head>
 <body>
 <script>
+    // function getCount(str) {
+    //     let arr = str.split('')
+    //     let vowels = ['a', 'e', 'i', 'o', 'u']
+    //     let res = []
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (vowels.includes(arr[i])) {
+    //             res.push(arr[i])
+    //         }
+    //     }
+    //     return res.length
+    // }
 
     function getCount(str) {
-           let VowelCount = 0
-        const s = str.split('')
-        for (let i = 0; i < s.length; i++) {
-            if (s[i] === 'a' | s[i] === 'e' | s[i] === 'i' | s[i] === 'o' | s[i] === 'u') {
-                VowelCount++
-            }
-        }
-        return VowelCount;
+        return str.split('').filter(l => 'aeiou'.includes(l)).length
     }
-
-    getCount('o a kak ushakov lil vo kashu kakao')
-
+    console.log(getCount('abracadabra'))
 </script>
 </body>
 </html>

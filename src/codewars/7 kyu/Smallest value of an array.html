@@ -6,11 +6,21 @@
 </head>
 <body>
 <script>
+    // function min(arr, toReturn) {
+    //     let sortedArr = [...arr].sort((a, b) => a - b)
+    //     return toReturn === 'value' ? sortedArr[0] : arr.indexOf(sortedArr[0])
+    // }
+
     function min(arr, toReturn) {
         return toReturn === 'value' ? Math.min(...arr) : arr.indexOf(Math.min(...arr))
     }
 
-    console.log(min([500,250,750,5000,1000,230], 'index'))
+    console.log(min([1, 2, 3, 4, 5], 'value'))
+    console.log(min([1, 2, 3, 4, 5], 'index'))
+    console.log(min([500, 250, 750, 5000, 1000, 230], 'value'))
+    console.log(min([500, 250, 750, 5000, 1000, 230], 'index'))
+    console.log(min([750, 50000, 10, 50], 'value'))
+    console.log(min([750, 50000, 10, 50], 'index'))
 </script>
 </body>
 </html>

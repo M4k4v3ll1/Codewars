@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert dashes</title>
+</head>
+<body>
+<script>
+    // function filterHomogenous(arrays) {
+    //    return arrays.filter(a => a.every((el) => typeof el === typeof a[0])).filter(a => a.length > 0)
+    // }
+
+    function filterHomogenous(arrays) {
+        return arrays.filter(a => a.length > 0 && a.every((el) => typeof el === typeof a[0]) )
+    }
+    console.log(filterHomogenous([[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]]))
+    console.log(filterHomogenous([[123, 234, 432], ['', 'abc'], [''], ['', 1], ['', '1'], []]))
+</script>
+</body>
+</html>
