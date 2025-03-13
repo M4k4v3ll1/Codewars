@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Index</title>
+</head>
+<body>
+<script>
+    // function findMagic(arr){
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (arr.indexOf(arr[i]) === arr[i]) {
+    //             return arr[i]
+    //         }
+    //     }
+    //     return -1
+    // }
+
+    function findMagic(arr){
+       return arr.findIndex(i => arr[i] === i)
+    }
+
+    console.log(findMagic([-20,-10,2,10,20]))
+    console.log(findMagic([6,5,83,5,3,18]))
+</script>
+</body>
+</html>

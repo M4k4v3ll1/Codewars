@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write Number in Expanded Form</title>
+</head>
+<body>
+<script>
+    function expandedForm(num) {
+        let str = num.toString().split('')
+        let res = []
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] !== '0') {
+                res.push(str[i] + '0'.repeat(str.length - 1 - i))
+            }
+
+        }
+        return res.join(' + ')
+    }
+
+    console.log(expandedForm(12))
+    console.log(expandedForm(42))
+    console.log(expandedForm(70304))
+</script>
+</body>
+</html>

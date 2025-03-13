@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make a box</title>
+</head>
+<body>
+<script>
+    // function box(n) {
+    //     let res = []
+    //     let border = '-'.repeat(n)
+    //     res.push(border)
+    //     let body = '-' + ' '.repeat(n-2) + '-'
+    //     for (let i = 1; i < n - 1; i++) {
+    //         res.push(body)
+    //     }
+    //     res.push(border)
+    //     return res
+    // }
+
+    function box(n) {
+        let border = '-'.repeat(n)
+        let body = '-' + ' '.repeat(n-2) + '-'
+        return [border, ...Array(n-2).fill(body), border]
+    }
+    console.log(box(3))
+    console.log(box(5))
+</script>
+</body>
+</html>

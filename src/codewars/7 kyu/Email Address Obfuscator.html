@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Address Obfuscator</title>
+</head>
+<body>
+<script>
+    function obfuscate(email) {
+        return email.replaceAll('.', ' [dot] ').replace('@', ' [at] ')
+    }
+
+    console.log(obfuscate('test@123.com'))
+    console.log(obfuscate('Code_warrior@foo.ac.uk'))
+</script>
+</body>
+</html>

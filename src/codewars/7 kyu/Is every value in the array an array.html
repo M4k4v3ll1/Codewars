@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Is every value in the array an array</title>
+</head>
+<body>
+<script>
+    // function arrCheck(value) {
+    //     for (let i = 0; i < value.length; i++) {
+    //          if (!Array.isArray(value[i])) {
+    //              return false
+    //          }
+    //     }
+    //     return true
+    // }
+    function arrCheck(value) {
+        return value.every(Array.isArray)
+    }
+
+    console.log(arrCheck([]))
+    console.log(arrCheck([['string']]))
+    console.log(arrCheck([[],{}]))
+    console.log(arrCheck([[1],[2],[3]]))
+    console.log(arrCheck(['A', 'R', 'R', 'A', 'Y']))
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scrolling Text</title>
+</head>
+<body>
+<script>
+    // function scrollingText(text) {
+    //     let arr = text.toUpperCase().split('')
+    //     let res = []
+    //     for (let i = 0; i < arr.length; i++) {
+    //         res.push(arr.join(''))
+    //         arr.push(text[i].toUpperCase())
+    //         arr.splice(0, 1)
+    //     }
+    //     return res
+    // }
+
+    function scrollingText(text) {
+        let res = []
+        for (let i = 0; i < text.length; i++) {
+            res.push((text.slice(i) + text.slice(0, i)).toUpperCase())
+        }
+        return res
+    }
+
+    console.log(scrollingText("abc"))
+    console.log(scrollingText("CODEWARS"))
+</script>
+</body>
+</html>
