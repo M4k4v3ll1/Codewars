@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NativeJS_1</title>
+</head>
+<body>
+<script>
+    let users = [
+        {name: 'Alex', age: 1},
+        {name: 'Bob', age: 2},
+        {name: 'Clara', age: 3},
+    ]
+    console.log(users)
+
+    let people = users.map(u => ({...u}))
+    console.log(people)
+    people[0].name = 'Gleb'
+    console.log(people)
+    console.log(users)
+</script>
+</body>
+</html>

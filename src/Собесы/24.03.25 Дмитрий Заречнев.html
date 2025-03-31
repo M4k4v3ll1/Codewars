@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NativeJS_1</title>
+</head>
+<body>
+<script>
+    console.log(typeof Object) // 'function' //Object — это встроенная функция-конструктор, поэтому typeof Object возвращает "function".
+    console.log(typeof Date) // 'function' //Date — это тоже встроенный конструктор, как и Object, следовательно, typeof Date вернет "function"
+    console.log(typeof null) // 'object' //Это историческая ошибка в JavaScript.
+                            // null является примитивным типом, но из-за бага в движке typeof null возвращает "object".
+                            // Этот баг остался для обратной совместимости.
+    console.log(typeof 1n) // 'bigint'
+    console.log(typeof String) // 'function' //String — это конструктор строк в JavaScript (функция-конструктор), аналогично Object и Date
+    console.log(typeof new String()) //'object' //new String() создаёт объект-обёртку для строки. typeof для объектов всегда возвращает "object".
+    console.log(typeof new Function()) //'function' //Все функции в JavaScript имеют тип "function", даже если они созданы через new Function().
+    console.log(typeof NaN) // 'number'
+    console.log(typeof []) // 'object'
+    console.log(typeof console.log(1)) //'undefined' //console.log(1) ничего не возвращает → его результат undefined.
+    console.log(typeof (typeof{})) //'string' //typeof {} → "object", так как {} — это объект. typeof "object" → "string", так как "object" — это строка.
+
+</script>
+</body>
+</html>

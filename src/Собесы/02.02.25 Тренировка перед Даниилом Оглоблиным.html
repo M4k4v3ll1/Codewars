@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NativeJS_1</title>
+</head>
+<body>
+<script>
+    //Написать фукнцию, проверяющую уникальность символов в строке
+    const isUnique = (str) => {
+        for (let i = 0; i < str.length; i++) {
+            for (let j = i + 1; j < str.length; j++ ) {
+                if (str[i] === str[j]) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    console.log(isUnique('asdASD'))
+    console.log(isUnique(''))
+    console.log(isUnique('1234567890'))
+    console.log(isUnique('asda'))
+
+    //Написать фукнцию, удаляющую повторяющиеся символы
+    const removeDupes = (str) => {
+        let uniqStr = ''
+        for (let i = 0; i < str.length; i++) {
+            let isDuplicate = false
+            for (let j = 0; j < uniqStr.length; j++ ) {
+                if (str[i] === uniqStr[j]) {
+                    isDuplicate = true
+                    break
+                }
+            }
+            if (!isDuplicate) {
+                uniqStr += str[i]
+            }
+        }
+        return uniqStr
+    }
+    console.log(removeDupes('asdasd'))
+    console.log(removeDupes(''))
+    console.log(removeDupes('zxcZXC'))
+    console.log(removeDupes('asd1111111asd'))
+
+    //ИЛИ
+    const removeDupes2 = (str) => {
+        return [...new Set(str)].join('')
+    }
+    console.log(removeDupes2('asdasd'))
+    console.log(removeDupes2(''))
+    console.log(removeDupes2('zxcZXC'))
+    console.log(removeDupes2('asd1111111asd'))
+
+    //Написать функцию debounce
+    const debounce = (func, delay) => {
+        let timer
+        return (...args) => {
+            clearTimeout(timer)
+            timer = setTimeout(() => func(...args), delay)
+        }
+    }
+
+    const printNumber = (number) => {
+        console.log(number)
+    }
+
+    const debouncedNumber = debounce(printNumber, 1000)
+
+    const tick = async (timer) => await new Promise(res => setTimeout(() => res(0), timer))
+    const testFunction = async () => {
+        debouncedNumber(1)
+        debouncedNumber(2)
+        await tick(500)
+        debouncedNumber(3)
+        await tick(1000)
+        debouncedNumber(4)
+    }
+
+    testFunction()
+
+    //Написать функцию глубокого копирования
+    const object = {
+        persons: {
+            children: [
+                {name: 'zxc', address: {street: 'asd', num: 1}},
+                {name: 'asd', address: {street: 'qwe', num: 2}}
+            ]
+        }
+    }
+
+    const deepCopy = (obj) => {
+        let newObj = {}
+        if (Array.isArray(obj)) {
+            newObj = obj.map(el => typeof el === 'object' ? deepCopy(el) : el)
+        } else {
+            for (let prop in obj) {
+                if (typeof obj[prop] === 'object') {
+                    newObj[prop] = deepCopy(obj[prop])
+                } else {
+                    newObj[prop] = obj[prop]
+                }
+            }
+        }
+        return newObj
+    }
+
+    const object2 = deepCopy(object)
+
+    console.log(object.persons.children[0] === object2.persons.children[0]) //false
+
+
+    //Типизация для useState
+    // const useState = <T>(initialValue: T): [T, (value: T) => void] => {
+    //     const value: T = initialValue
+    //     const setValue = (newValue: T) => {
+    //         value = setValue
+    //     }
+    //     return [value, setValue]
+    // }
+</script>
+</body>
+</html>

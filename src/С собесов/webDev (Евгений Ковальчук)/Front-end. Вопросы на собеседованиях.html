@@ -1,68 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>webDev</title>
 </head>
 <body>
-<script>
- //Функция проверки палиндрома
- // function isPalindrome(str) {
- //    return str === str.split('').reverse().join('')
- // }
- //
- // console.log(isPalindrome('тест'))
- // console.log(isPalindrome('шалаш'))
-
- //Функция поиска самого короткого слова
- // function findShort(str) {
- //     let words = str.split(' ')
- //     let res = words[0]
- //     for (let i = 1; i < words.length - 1; i++) {
- //         if (res.length > words[i+1].length) {
- //             res = words[i+1]
- //         }
- //     }
- //     return res
- // }
-
- //Функция создания инициалов
- // function toInitials(str) {
- //     return `${str.split(' ')[0][0].toUpperCase()}.${str.split(' ')[1][0].toUpperCase()}.`
- // }
- // console.log(toInitials('Bill Gates'))
- // console.log(toInitials('elon musk'))
-
- //Функция суммирования всех цифр числа
- // function sumDigits(num) {
- //     let arr = num.toString().split('')
- //     let res = 0
- //     for (let i = 0; i < arr.length; i++) {
- //         if (arr[i] !== '-') {
- //             res += +arr[i]
- //         }
- //     }
- //     return res
- // }
- //или
- // function sumDigits(num) {
- //     return Math.abs(num).toString().split('').reduce((sum, digits) => sum += +digits, 0)
- // }
- // console.log(sumDigits(99))
- // console.log(sumDigits(-32))
-
- //Функция поиска минимального и максимального значения в массиве
- // function minMax(arr) {
- //     let sortedArr = arr.sort((prev, next) => prev - next)
- //     return [sortedArr[0], sortedArr[sortedArr.length - 1]]
- // }
- // или
- function minMax(arr) {
-     return [Math.min(...arr), Math.max(...arr)]
- }
- console.log(minMax([2, 9, 10, 25, 47, 4, 1]))
- console.log(minMax([2, 1]))
- console.log(minMax([1]))
-</script>
+<h1>Title</h1>
+<table>
+    <tr>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+    </tr>
+    <tr>
+        <td colspan="2">Cell 3</td>
+        <td>Cell 4</td>
+    </tr>
+</table>
+<h2>List</h2>
+<ul><li>Milk</li></ul>
+<p>Footer
 </body>
 </html>
