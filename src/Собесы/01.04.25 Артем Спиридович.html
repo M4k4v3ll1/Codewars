@@ -6,67 +6,6 @@
 </head>
 <body>
 <script>
-    // (function () {
-    //     let p = Promise.reject()
-    //
-    //     p.then(() => {
-    //         console.log('1')
-    //     }).catch(() => {
-    //         console.log('2')
-    //     }).then(() => {
-    //         console.log('3')
-    //     })
-    //
-    //     p.catch(() => {
-    //         console.log('4')
-    //     }).then(() => {
-    //         console.log('5')
-    //     }).catch(() => {
-    //         console.log('6')
-    //     })
-    //
-    // })()
-
-    //CS 4 2 5 3
-    //MI 5 3
-
-    async function async1() {
-        console.log('1');
-        await new Promise(res => {
-            console.log('2');
-            res('3');
-        }).then(m => console.log(m));
-        console.log('4');
-        setTimeout(() => console.log('5'), 0);
-    }
-
-    async function async2() {
-        console.log('6');
-        setTimeout(() => console.log('7'), 0);
-        await Promise.resolve().then(() => console.log('8'));
-        console.log('9');
-    }
-
-    console.log('Start');
-
-    setTimeout(() => console.log('10'), 0);
-
-    async1();
-    async2();
-
-    new Promise(res => {
-        console.log('11');
-        res();
-    }).then(() => console.log('12'));
-
-    console.log('End');
-    // Верное решение   // CS Start 1 2 6 11 End 3 8 12 4 9 10 7 5
-    // Мое решение      // CS Start 1 2 6 11 End 3 12 4 10 7 8 9 5
-    // Решение GPT      // CS Start 1 2 6 11 End 8 9 3 4 12 10 7 5
-    // // MI 3 12 4
-    // // MA 10 7 5
-    // Методы массивов!!
-
     //---
     // function resolveAfter2Seconds(x) {
     //     console.log(`${x}`)
