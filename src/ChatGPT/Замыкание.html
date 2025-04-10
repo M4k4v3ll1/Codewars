@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Задачи на замыкание</title>
+</head>
+<body>
+<script>
+    //НАписать функцию, которая при каждом вызове возвращает счетчик +1. Каждыйц вызов createCounter создает независимый счетчик
+    // function createCounter () {
+    //     let count = 0
+    //
+    //     return function () {
+    //         count++
+    //         return count
+    //     }
+    // }
+    //
+    // const counter1 = createCounter()
+    // const counter2 = createCounter()
+    //
+    // console.log(counter1())
+    // console.log(counter1())
+    //
+    // console.log(counter2())
+    // console.log(counter2())
+
+    //-------
+    //Что выведет этот код и почему?
+    // const funcs = []
+    //
+    // for (var i = 0; i < 3; i++) {
+    //     funcs.push(function() {
+    //         console.log(i)
+    //     })
+    // }
+    //
+    // funcs[0]() //3
+    // funcs[1]() //3
+    // funcs[2]() //3
+
+    //Если исправим var на let, то
+    // const funcs = []
+    //
+    // for (let i = 0; i < 3; i++) {
+    //     funcs.push(function() {
+    //         console.log(i)
+    //     })
+    // }
+    //
+    // funcs[0]() //0
+    // funcs[1]() //1
+    // funcs[2]() //2
+
+    //--------
+    //Написать функцию once(fn), которая вызоввет fn только один раз, а потом будет возвращать результат первого вызова
+    // function greet() {
+    //     console.log('Привет!')
+    //     return 42
+    // }
+    //
+    // function once(fn) {
+    //     let called = false
+    //     let res
+    //     return function() {
+    //         if (!called) {
+    //             called = true
+    //             res = fn()
+    //         }
+    //         return res
+    //     }
+    // }
+    //
+    // const greetOnce = once(greet)
+    //
+    // console.log(greetOnce())
+    // console.log(greetOnce())
+    // console.log(greetOnce())
+
+    //-------
+    //Сделать объект с приватным состоянием без изменения напрямую
+    // function createAccount() {
+    //     let bal = 0
+    //     return {
+    //         getBalance() {
+    //             return bal
+    //         },
+    //         deposit(val) {
+    //            if (val > 0) {
+    //                return bal +=val
+    //            }
+    //         }
+    //     }
+    // }
+    //
+    // const bankAccount = createAccount()
+    //
+    // console.log(bankAccount.getBalance()) //0
+    // bankAccount.deposit(100)
+    // console.log(bankAccount.getBalance()) //100
+    // bankAccount.balance = 10000000 //не должно работать
+    // console.log(bankAccount.getBalance()) //100
+
+    // class Account {
+    //     #balance = 0
+    //     getBalance() {
+    //         return this.#balance
+    //     }
+    //     deposit(val) {
+    //         if (val > 0) {
+    //             return this.#balance +=val
+    //         }
+    //     }
+    // }
+    //
+    // const bankAccount = new Account
+    //
+    // console.log(bankAccount.getBalance()) //0
+    // bankAccount.deposit(100)
+    // console.log(bankAccount.getBalance()) //100
+    // bankAccount.#balance = 10000000 //не должно работать
+    // console.log(bankAccount.getBalance()) //100
+
+    //--------
+    //Паттерн Модуль
+    const counterModule = (function () {
+        let count = 0
+        return {
+            increment() {
+                count++
+            },
+            decrement() {
+                count--
+            },
+            getCount() {
+                return count
+            }
+        }
+    })()
+
+    console.log(counterModule.getCount())
+    counterModule.increment()
+    console.log(counterModule.getCount())
+    counterModule.increment()
+    console.log(counterModule.getCount())
+    counterModule.decrement()
+    console.log(counterModule.getCount())
+</script>
+</body>
+</html>

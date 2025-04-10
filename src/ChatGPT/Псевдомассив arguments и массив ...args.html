@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Псевдомассив arguments и массив ...args</title>
+</head>
+<body>
+<script>
+    //Написать 2 функции sumWithArguments и sumWithRest, которые возвращают сумму всех переданных аргументов
+    // function sumWithArguments() {
+    //     let res = []
+    //     for (let i = 0; i < arguments.length; i++) {
+    //         res.push(arguments[i])
+    //     }
+    //     return res.reduce((a, b) => a + b)
+    // }
+    //или
+    function sumWithArguments() {
+        return Array.from(arguments).reduce((a, b) => a + b)
+    }
+
+    function sumWithRest(...args) {
+        return args.reduce((a, b) => a + b)
+    }
+
+    console.log(sumWithArguments(1, 2, 3))
+    console.log(sumWithRest(4, 5, 6))
+</script>
+</body>
+</html>

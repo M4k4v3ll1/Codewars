@@ -27,42 +27,54 @@
     //
     // })()
 
-    async function async1() {
-        console.log('1');
-        await new Promise(res => {
-            console.log('2');
-            res('3');
-        }).then(m => console.log(m));
-        console.log('4');
-        setTimeout(() => console.log('5'), 0);
-    }
+    // async function async1() {
+    //     console.log('1');
+    //     await new Promise(res => {
+    //         console.log('2');
+    //         res('3');
+    //     }).then(m => console.log(m));
+    //     console.log('4');
+    //     setTimeout(() => console.log('5'), 0);
+    // }
+    //
+    // async function async2() {
+    //     console.log('6');
+    //     setTimeout(() => console.log('7'), 0);
+    //     await Promise.resolve().then(() => console.log('8'));
+    //     console.log('9');
+    // }
+    //
+    // console.log('Start');
+    //
+    // setTimeout(() => console.log('10'), 0);
+    //
+    // async1();
+    // async2();
+    //
+    // new Promise(res => {
+    //     console.log('11');
+    //     res();
+    // }).then(() => console.log('12'));
+    //
+    // console.log('End');
+    //
+    // // CS Start - 1 - 2 - 6 - 11 - End - 3  - 8 - 12 - 4 - 9 - 10 - 5
+    // // MI 3 12
+    // // MA 10 7 5
 
-    async function async2() {
-        console.log('6');
-        setTimeout(() => console.log('7'), 0);
-        await Promise.resolve().then(() => console.log('8'));
-        console.log('9');
-    }
 
-    console.log('Start');
+    new Promise((resolve) => resolve()) // P1
+        .then(() => { // C1
+            console.log(1);
+            return new Promise((resolve) => resolve());
+        })
+        .then(() => console.log(2)); // C2
 
-    setTimeout(() => console.log('10'), 0);
-
-    async1();
-    async2();
-
-    new Promise(res => {
-        console.log('11');
-        res();
-    }).then(() => console.log('12'));
-
-    console.log('End');
-
-    // CS Start - 1 - 2 - 6 - 11 - End - 3  - 8 - 12 - 4 - 9 - 10 - 5
-    // MI 3 12
-    // MA 10 7 5
-
-    Методы массивов!!
+    new Promise((resolve) => resolve()) // P2
+        .then(() => console.log(3)) // C3
+        .then(() => console.log(4)) // C4
+        .then(() => console.log(5)) // C5
+        .then(() => console.log(6))
 </script>
 </body>
 </html>

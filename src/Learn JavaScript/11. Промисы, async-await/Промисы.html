@@ -13,23 +13,41 @@
     //
     // delay(3000).then(() => alert('выполнилось через 3 секунды'))
 
-    const server = {
-        getData() {
-            return new Promise((res, rej) => {
-                setTimeout(() => {
-                    rej('Some error')
-                }, 1000)
-            })
-        }
-    }
-
-    server.getData()
-        .catch((t) => t + 'catch1')
-        .catch((t) => t + 'catch2')
-        .then((t) => t + 'then1')
-        .finally((t) => t + 'finally')
-        .then((t) => console.log(t))
+    // const server = {
+    //     getData() {
+    //         return new Promise((res, rej) => {
+    //             setTimeout(() => {
+    //                 rej('Some error')
+    //             }, 1000)
+    //         })
+    //     }
+    // }
+    //
+    // server.getData()
+    //     .catch((t) => t + 'catch1')
+    //     .catch((t) => t + 'catch2')
+    //     .then((t) => t + 'then1')
+    //     .finally((t) => t + 'finally')
+    //     .then((t) => console.log(t))
     //'Some errorcatch1then1'
+
+    console.log('start')
+    setTimeout(() => console.log('timeout'), 0)
+
+    new Promise((resolve, reject) => {
+        console.log('promise constructor')
+        reject()
+    }).then(() => console.log('promise'))
+    .catch(() => console.log('promise1'))
+    .catch(() => console.log('promise2'))
+    .then(() => console.log('promise3'))
+    .then(() => console.log('promise4'))
+
+    console.log('final')
+
+    //CS start - promise constructor - final - promise1 - promise3 - promise4 - timeout
+    //MI
+    //MA
 </script>
 </body>
 </html>
