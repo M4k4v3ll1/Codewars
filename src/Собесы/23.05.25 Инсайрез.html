@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NativeJS_1</title>
+</head>
+<body>
+<script>
+    import { useState, useEffect, useRef } from "react";
+
+    export const useTimer = (initialSeconds: number) => {
+        const [seconds, setSeconds] = useState(initialSeconds);
+        const endTimeRef = useRef<number>(Date.now() + initialSeconds * 1000);
+
+        useEffect(() => {
+            const tick = () => {
+                const now = Date.now();
+                const remainingMs = endTimeRef.current - now;
+                const remainingSeconds = Math.max(Math.ceil(remainingMs / 1000), 0);
+                setSeconds(remainingSeconds);
+
+                if (remainingSeconds === 0) {
+                    clearInterval(intervalId);
+                }
+            };
+
+            tick(); // сразу обновляем
+
+            const intervalId = setInterval(tick, 250); // тик каждые 250мс для точности
+
+            return () => clearInterval(intervalId);
+        }, []);
+
+        return seconds;
+    };
+
+//------------------------------
+    import React, { useState, useEffect } from "react";
+
+    export const Users = () => {
+        const [users, setUsers] = useState<{ name: string; age: number }[]>([]);
+        const [load, setLoad] = useState(false);
+        const [scroll, setScroll] = useState(0);
+
+        const fetchUsers = () =>
+            Promise.resolve([
+                { name: "Max", age: 22 },
+                { name: "Maria", age: 19 },
+            ]);
+
+        useEffect(() => {
+            let isMounted = true;
+
+            const loadData = async () => {
+                setLoad(true);
+                const data = await fetchUsers();
+                if (isMounted) {
+                    setUsers(data);
+                    setLoad(false);
+                }
+            };
+
+            loadData();
+
+            const handleScroll = () => setScroll(window.scrollY);
+            window.addEventListener("scroll", handleScroll);
+
+            return () => {
+                isMounted = false;
+                window.removeEventListener("scroll", handleScroll);
+            };
+        }, []);
+
+        if (load) {
+            return <div>Loading...</div>; // Можно заменить на <Loader />
+        }
+
+        return (
+            <div className="users">
+                {users.map((user, index) => (
+                    <div className="user" key={index}>
+                        {user.name}, {user.age}
+                    </div>
+                ))}
+            </div>
+        );
+    };
+
+    //Можно реализовать trottling через requestAnimationFrame -  метод, который говорит браузеру:
+    // «Вызови эту функцию перед следующим кадром перерисовки (примерно 60 раз в секунду).»
+
+</script>
+</body>
+</html>

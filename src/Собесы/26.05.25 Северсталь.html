@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NativeJS_1</title>
+</head>
+<body>
+<script>
+//     import { useState, useEffect, useRef } from "react";
+//
+//     export const useTimer = (initialSeconds: number) => {
+//         const [seconds, setSeconds] = useState(initialSeconds);
+//         const endTimeRef = useRef<number>(Date.now() + initialSeconds * 1000);
+//
+//         useEffect(() => {
+//             const tick = () => {
+//                 const now = Date.now();
+//                 const remainingMs = endTimeRef.current - now;
+//                 const remainingSeconds = Math.max(Math.ceil(remainingMs / 1000), 0);
+//                 setSeconds(remainingSeconds);
+//
+//                 if (remainingSeconds === 0) {
+//                     clearInterval(intervalId);
+//                 }
+//             };
+//
+//             tick(); // сразу обновляем
+//
+//             const intervalId = setInterval(tick, 250); // тик каждые 250мс для точности
+//
+//             return () => clearInterval(intervalId);
+//         }, []);
+//
+//         return seconds;
+//     };
+//
+// //------------------------------
+//     import React, { useState, useEffect } from "react";
+//
+//     export const Users = () => {
+//         const [users, setUsers] = useState<{ name: string; age: number }[]>([]);
+//         const [load, setLoad] = useState(false);
+//         const [scroll, setScroll] = useState(0);
+//
+//         const fetchUsers = () =>
+//             Promise.resolve([
+//                 { name: "Max", age: 22 },
+//                 { name: "Maria", age: 19 },
+//             ]);
+//
+//         useEffect(() => {
+//             let isMounted = true;
+//
+//             const loadData = async () => {
+//                 setLoad(true);
+//                 const data = await fetchUsers();
+//                 if (isMounted) {
+//                     setUsers(data);
+//                     setLoad(false);
+//                 }
+//             };
+//
+//             loadData();
+//
+//             const handleScroll = () => setScroll(window.scrollY);
+//             window.addEventListener("scroll", handleScroll);
+//
+//             return () => {
+//                 isMounted = false;
+//                 window.removeEventListener("scroll", handleScroll);
+//             };
+//         }, []);
+//
+//         if (load) {
+//             return <div>Loading...</div>; // Можно заменить на <Loader />
+//         }
+//
+//         return (
+//             <div className="users">
+//                 {users.map((user, index) => (
+//                     <div className="user" key={index}>
+//                         {user.name}, {user.age}
+//                     </div>
+//                 ))}
+//             </div>
+//         );
+//     };
+//
+//     //Можно реализовать trottling через requestAnimationFrame -  метод, который говорит браузеру:
+//     // «Вызови эту функцию перед следующим кадром перерисовки (примерно 60 раз в секунду).»
+//________________________________________
+// const a = {a: 'a'}
+// const b = {b: 'b'}
+// const c = {}
+// c[a] = a
+// c[b] = b
+// console.log(c[a].a, c[b].b)
+
+//В JS при использовании объекта в качестве ключа объекта, он преобразуется в строку.
+//Это поведение относится ко всем ключам, не являющимся символами — объекты автоматически преобразуются в строку через метод toString().
+//c[a] = a   // превращается в c["[object Object]"] = a
+//c[b] = b   // превращается в c["[object Object]"] = b
+//Оба присваивания используют один и тот же строковый ключ: "[object Object]". Вторая запись (c[b] = b) перезаписывает первую.
+//Теперь объект c содержит только одно свойство:
+// c = {
+//     "[object Object]": b
+// }
+//Так как и c[a] и c[b] обращаются к c["[object Object]"], они оба вернут b^
+//c[a] === b
+//c[b] === b
+//Следовательно:
+// c[a].a === undefined  // потому что в объекте b нет свойства a
+// c[b].b === 'b'        // потому что в объекте b есть свойство b
+//В консоль выведется undefined b
+//--------------------------------
+// console.log(1)
+// setTimeout(() => console.log(2))
+// Promise.resolve().then(() => console.log(3))
+// Promise.resolve().then(() => setTimeout(() => console.log(4)))
+// Promise.resolve(console.log(5)).then(() => console.log(6))
+// setTimeout(() => console.log(7))
+// console.log(8)
+
+//CS 1 - 5 - 8 - 3 - 6 - 2 - 7 - 4
+//MI 3 sT(4) 6
+//MA 2 7 4
+
+//_____________________________
+// function sleep<T extends number>(ms: T): Promise<T> {
+//     return new Promise(res => {
+//         setTimeout(() => {
+//             res(ms)
+//         }, ms)
+//     })
+// }
+// function sleep(ms) {
+//     return new Promise(res => {
+//         setTimeout(() => {
+//             res(ms)
+//         }, ms)
+//     })
+// }
+// sleep(1000)
+//     .then(res => {
+//         console.log(res)
+//     })
+//     .then(res => {
+//         console.log(res)
+//         return sleep(500)
+//     })
+//     .then(res => {
+//         console.log(res)
+//     })
+//
+// //dl1 - 1000 - undefined - dl0,5 - 500
+
+// async function promiseAll(promises) {
+//     let a = promises[0].resolve()
+//     let b = promises[1].resolve()
+//     return [a, b]
+// }
+
+// async function promiseAll(promises) {
+//     const results = []
+//     let counter = 0
+//     return new Promise((resolve, reject) => {
+//         promises.forEach((pr, i) => {
+//             pr.then(res => {
+//                 results[i] = res
+//                 counter +=1
+//                 if (counter === promises.length) {
+//                     resolve(results)
+//                 }
+//             }).catch(reject)
+//         })
+//     })
+// }
+
+//ЗАДАЧА С ИСПОЛЬЗОВАНИЕМ СТЕКА
+const bracketsMap = {'{':'}', '[':']', '(':')'}
+
+function checkBrackets(str) {
+    const stack = []
+
+    for (let i = 0; i < str.length; i++) {
+        const cur = str[i]
+        if (bracketsMap[cur]) {
+            stack.push(bracketsMap[cur])
+        } else if (cur !== stack.pop()) {
+            return false
+        }
+    }
+
+    return !stack.length
+}
+
+console.log(checkBrackets('({}(){()})')) //true
+console.log(checkBrackets('()[]{}')) //true
+console.log(checkBrackets('({[})]')) //false
+console.log(checkBrackets('([{]])')) //false
+console.log(checkBrackets('}{')) //false
+</script>
+</body>
+</html>

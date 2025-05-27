@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valid Spacing</title>
+</head>
+<body>
+<script>
+    function validSpacing(str) {
+        const stack = []
+        const map = {' ': ' '}
+        let arr = str.split('')
+        if (arr[0] === ' ') return false
+        for (let i = 0; i < str.length; i++) {
+            let cur = arr[i]
+            if (map[cur]) {
+                stack.push(cur)
+            } else if (cur !== stack.pop()) {
+            return false
+            }
+        }
+        return !stack.length
+    }
+
+    console.log(validSpacing('Hello'))
+    console.log(validSpacing(' Hello'))
+    console.log(validSpacing('Hello World'))
+</script>
+</body>
+</html>
