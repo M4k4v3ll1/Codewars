@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Debounce</title>
+    </head>
+        <body>
+        <script>
+            const search = (query) => {
+                console.log(`Отправлен запрос: ${query}`)
+            }
+
+            const debounce = (fn, delay) => {
+                let timerID
+                return function (...args) {
+                    clearTimeout(timerID)
+                    timerID = setTimeout(() => {
+                        fn(...args)
+                    }, delay)
+                }
+            }
+
+            const tick = (ms) => new Promise((res) => setTimeout(res, ms));
+
+            const debouncedSearch = debounce(search, 300); // ты реализуешь debounce
+
+            const test = async () => {
+                debouncedSearch('r');
+                await tick(100);
+                debouncedSearch('re');
+                await tick(100);
+                debouncedSearch('rea');
+                await tick(100);
+                debouncedSearch('reac');
+                await tick(100);
+                debouncedSearch('react'); // <-- только это должно вызвать search через 300мс
+
+                await tick(500);
+                debouncedSearch('redux'); // <-- это тоже вызовется отдельно
+
+                // Ожидаем:
+                // 🔍 Отправлен запрос: react
+                // 🔍 Отправлен запрос: redux
+            };
+
+            test();
+        </script>
+</body>
+</html>

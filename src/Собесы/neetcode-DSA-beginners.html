@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09.02.2025 Даниил Оглоблин</title>
+</head>
+<body>
+<script>
+    function detectDuplicates (arr) {
+        let res = []
+        for (let i = 0; i < arr.length; i++) {
+            if (res.some((el) => el === arr[i])) {
+                return true
+            } else {
+                res.push(arr[i])
+            }
+        }
+        return false
+    }
+
+    console.log(detectDuplicates([1, 2, 3, 3])) //true
+    console.log(detectDuplicates([1, 2, 3, 4])) //false
+</script>
+</body>
+</html>
